@@ -1,4 +1,5 @@
 using System.IO;
+using System.Text.Json;
 
 namespace Extract
 {
@@ -23,7 +24,19 @@ namespace Extract
                 if(line.StartsWith(@"{""id"":"""))
                 {
                     lines++;
-                    System.Console.WriteLine($"{this.Statistics(lines, failures)} {line.Substring(0, 48)}");
+                
+                    var options = new JsonDocumentOptions
+                    {
+                        AllowTrailingCommas = true
+                    };
+
+                    var json = line.EndsWith(",") ?  line.Substring(0, line.Length - 1) : line;
+                    using (JsonDocument document = JsonDocument.Parse(json, options))
+                    {
+                        var name = document.RootElement.GetProperty("key").GetString();
+
+                        System.Console.WriteLine($"{this.Statistics(lines, failures)} {name}");
+                    }
                 }
                 else
                 {
