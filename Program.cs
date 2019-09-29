@@ -8,7 +8,7 @@ namespace npmextract
     {
         static void Main(string[] args)
         {
-            var extractor = new Extractor(@"test.json");
+            var extractor = new Extractor(@"test.json", @"D:/npm");
 
             extractor.Read();
         }
