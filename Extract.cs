@@ -22,7 +22,7 @@ namespace Extract
         public void Read()
         {
             StreamReader file = new System.IO.StreamReader(this.jsonpath);
-            string line;
+            string? line;
             long lines = 0;
             long failures = 0;
 
