@@ -46,7 +46,7 @@ namespace Extract
 
                             System.Console.WriteLine($"{this.Statistics(lines, failures)} {name} {json.Length/1024}kb");
 
-                            Save(name, line);
+                            //Save(name, json);
                         }
                     }
                     else
@@ -54,8 +54,6 @@ namespace Extract
                         failures++;
                     }  
                     
-                    file.Close();
-
                     if(errors.Count > 0)
                         File.WriteAllLines("errors.txt", errors);
                 }
@@ -65,6 +63,8 @@ namespace Extract
                     errors.Add(e.ToString());
                 }
             }
+
+            file.Close();
         }
 
         private string Statistics(long _ok, long _failures)
