@@ -8,9 +8,10 @@ namespace npmextract
     {
         static void Main(string[] args)
         {
-            var extractor = new Extractor(@"test.json", @"D:/npm");
+            var lookup = new LookupCreator(@"test.json");
 
-            extractor.Read();
+            lookup.Parse();
+            lookup.Write(@"test.lookup.txt");
         }
     }
 }

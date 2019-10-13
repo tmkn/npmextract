@@ -16,5 +16,15 @@ namespace Extract.Tests
 
             Assert.True(true);
         }
+
+        [Fact]
+        public void Test2()
+        {
+            var lookup = new LookupCreator(@"test.json");
+
+            lookup.Parse();
+
+            Assert.True(lookup.lookups.Count == 10);
+        }
     }
 }
